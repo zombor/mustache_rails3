@@ -76,10 +76,11 @@ class Mustache
       # @param [ActionView::Template]
       def compile(template)
         mustache_class = mustache_class_from_template(template)
-        mustache_class.template_file = mustache_template_file(template)
+        template_file = mustache_template_file(template)
 
         <<-MUSTACHE
           mustache = ::#{mustache_class}.new
+          mustache.template_file = #{template_file.inspect}
           mustache.view = self
           mustache[:yield] = content_for(:layout)
           mustache.context.update(local_assigns)
