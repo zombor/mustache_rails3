@@ -14,7 +14,7 @@ class Mustache
     str.html_safe? ? str : CGI.escapeHTML(str)
   end
 
-  class Rails < Mustache
+  class Railstache < Mustache
     attr_accessor :view
 
     def method_missing(method, *args, &block)
@@ -132,4 +132,4 @@ class Mustache
 end
 
 #::ActiveSupport::Dependencies.autoload_paths << Rails.root.join("app", "views")
-::ActionView::Template.register_template_handler(:rb, Mustache::Rails::TemplateHandler)
+::ActionView::Template.register_template_handler(:rb, Mustache::Railstache::TemplateHandler)
