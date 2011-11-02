@@ -32,7 +32,7 @@ class Mustache
     #
     def partial(name)
       partial_name = "_#{name}.#{Config.template_extension}"
-      template_dir = Pathname.new(self.class.template_file).dirname
+      template_dir = Pathname.new(self.template_file).dirname
       partial_path = File.expand_path("#{template_dir}/#{partial_name}")
       unless File.file?(partial_path)
         partial_path = "#{Config.shared_path}/#{partial_name}"
