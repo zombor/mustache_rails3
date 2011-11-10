@@ -80,7 +80,7 @@ class Mustache
       # hence the hack below
       #
       # @param [ActionView::Template]
-      def compile(template)
+      def call(template)
         mustache_class = mustache_class_from_template(template)
         template_file = mustache_template_file(template)
 
@@ -113,7 +113,7 @@ class Mustache
 
       # In Rails 3.1+, #call takes the place of #compile
       def self.call(template)
-        new.compile(template)
+        new.call(template)
       end
 
     private
