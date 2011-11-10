@@ -72,8 +72,6 @@ class Mustache
 
     class TemplateHandler
 
-      include ActionView::Template::Handlers::Compilable
-      
       class_attribute :default_format
       self.default_format = :mustache
 
