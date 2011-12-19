@@ -16,6 +16,11 @@ class FullStache < Mustache::Railstache
     end
 end
 
+class InitialStache < Mustache::Railstache
+  def initialize
+    
+  end
+end
 
 describe Mustache::Railstache do
 
@@ -31,6 +36,11 @@ describe Mustache::Railstache do
         :one => 1,
         :two => 2,
       }
+    end
+    
+    it "shold not include initialize" do
+      i = InitialStache.new
+      i.to_hash.should == {}
     end
     
   end
