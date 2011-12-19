@@ -1,5 +1,6 @@
 require 'action_view'
 require 'active_support'
+require 'active_support/core_ext/class/attribute'
 require 'mustache'
 
 class Mustache
