@@ -26,6 +26,14 @@ class Mustache
       super(method, include_private) || view.respond_to?(method, include_private)
     end
 
+    def to_hash
+      rv = {}
+      (methods - Mustache::Railstache.instance_methods).each do |m|
+        rv[m] = send(m)
+      end
+      rv
+    end
+
     # Redefine where Mustache::Rails templates locate their partials:
     #
     # (1) in the same directory as the current template file.
