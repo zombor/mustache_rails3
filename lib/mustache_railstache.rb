@@ -26,6 +26,30 @@ class Mustache
       super(method, include_private) || view.respond_to?(method, include_private)
     end
 
+    # function to return a view, routing around standard rails viewing. Useful to get a view object
+    # in a controller, and subsequently render to json and return this to the client, which then renders
+    def self.for(options={})
+      stache = new(false)
+      stache.view = options[:view]
+      options.delete(:view)
+
+      options.each do |key, value|
+        stache[key] = value
+      end
+
+      stache.send(:init)
+      return stache
+    end
+
+    def initialize(run=true)
+      init if run
+    end
+
+    #override this function to do the initialize
+    def init
+    end
+    private :init
+
     def to_hash
       rv = {}
       (methods - Mustache::Railstache.instance_methods).each do |m|
