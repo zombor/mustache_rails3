@@ -37,7 +37,7 @@ class Mustache
         stache[key] = value
       end
 
-      stache.send(:init)
+      stache.init
       return stache
     end
 
@@ -48,7 +48,6 @@ class Mustache
     #override this function to do the initialize
     def init
     end
-    private :init
 
     def to_hash
       rv = {}
