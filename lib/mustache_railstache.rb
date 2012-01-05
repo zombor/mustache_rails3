@@ -50,9 +50,9 @@ class Mustache
     end
 
     class <<self; attr_reader :fields_for_hash; end
-    def self.expose_to_hash(field)
+    def self.expose_to_hash(*fields)
       @fields_for_hash ||= Array.new
-      @fields_for_hash << field
+      @fields_for_hash |= fields
     end
 
     def to_hash
