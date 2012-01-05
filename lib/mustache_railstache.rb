@@ -49,10 +49,21 @@ class Mustache
     def init
     end
 
+    class <<self; attr_reader :fields_for_hash; end
+    def self.expose_to_hash(field)
+      @fields_for_hash ||= Array.new
+      @fields_for_hash << field
+    end
+
     def to_hash
       rv = {}
       (methods - Mustache::Railstache.instance_methods).each do |m|
         rv[m] = send(m)
+      end
+      if self.class.fields_for_hash
+        self.class.fields_for_hash.each do |m|
+          rv[m] = self[m]
+        end
       end
       rv
     end
