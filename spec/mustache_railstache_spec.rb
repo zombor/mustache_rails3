@@ -123,11 +123,13 @@ describe Mustache::Railstache do
     end
 
     it "should try to find the partial in other directories if a \/ is  detected" do
-      @filename = "other_dir/_other_template.#{@template_extension}"
+      @dir = "other_dir"
+      @file = "other_template"
+      @filename = "#{@dir}/_#{@file}.#{@template_extension}"
 
       File.open("#{@template_root}/#{@filename}", 'w') { |f| f.write('other_dir') }
 
-      @f.partial(@file).should == "other_dir"
+      @f.partial("#{@dir}/#{@file}").should == "other_dir"
     end
   end
 end
