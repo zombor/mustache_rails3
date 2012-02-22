@@ -77,7 +77,7 @@ describe Mustache::Railstache do
   end
 
   describe "#partials" do
-    before(:each) do
+    before do
       FakeFS.activate!
 
       @f = FullStache.new
@@ -100,7 +100,7 @@ describe Mustache::Railstache do
       @f.stub(:template_file).and_return("#{@template_path}/test.html.mustache")
     end
 
-    after(:each) do
+    after do
       FakeFS.deactivate!
     end
 
