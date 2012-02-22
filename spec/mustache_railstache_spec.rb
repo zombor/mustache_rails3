@@ -131,5 +131,16 @@ describe Mustache::Railstache do
 
       @f.partial("#{@dir}/#{@file}").should == "other_dir"
     end
+
+    it "should not try to find the partial in the shared directory when the file is not found" do
+      @dir = "completely_different_dir"
+      @file = "shared_file"
+      @filename = "#{@dir}/_#{@file}.#{@template_extension}"
+      @shared_filename = "shared/_#{@file}.#{@template_extension}"
+
+      File.open("#{@template_root}/#{@shared_filename}", 'w') { |f| f.write('shared_file') }
+
+      lambda { @f.partial("#{@dir}/#{@file}") }.should raise_error(Errno::ENOENT)
+    end
   end
 end
