@@ -85,7 +85,7 @@ class Mustache
       partial_name = "_#{name}.#{Config.template_extension}"
       partial_path = File.expand_path("#{template_dir}/#{partial_name}")
 
-      unless File.file?(partial_path)
+      unless dir or File.file?(partial_path)
         partial_path = "#{Config.shared_path}/#{partial_name}"
       end
 
