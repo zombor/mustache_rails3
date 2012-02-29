@@ -142,5 +142,14 @@ describe Mustache::Railstache do
 
       lambda { @f.partial("#{@dir}/#{@file}") }.should raise_error(Errno::ENOENT)
     end
+
+    it "should not fail when a symbol is given as file instead of a string" do
+      @file = :filename
+      @filename = "_#{@file.to_s}.#{@template_extension}"
+
+      File.open("#{@template_path}/#{@filename}", 'w') { |f| f.write('template_dir') }
+
+      @f.partial(@file).should == "template_dir"
+    end
   end
 end
