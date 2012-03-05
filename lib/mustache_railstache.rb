@@ -74,6 +74,8 @@ class Mustache
     # (2) in the shared templates path (can be configured via Config.shared_path=(value))
     #
     def partial(name)
+      name = name.to_s
+
       if name.index '/'
         dir, name = name.split(/\//)
 
