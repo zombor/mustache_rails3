@@ -14,7 +14,7 @@ app/views/:controller/:action.rb
 
 <pre><code>#app/views/home/index.rb
 
-class Home::Index &lt; Mustache::Rails
+class Home::Index &lt; Mustache::Railstache
   def world
     'New Caprica'
   end
@@ -35,7 +35,7 @@ Layouts work much the same way, using a similar naming convention. Subclass Must
 
 <pre><code>#app/views/layouts/main.rb
 
-class Layouts::Main &lt; Mustache::Rails
+class Layouts::Main &lt; Mustache::Railstache
   def default_title
     'A Cylon fleet has jumped into orbit!'
   end
@@ -57,7 +57,7 @@ A Rails 3 reminder: be sure to add
 to your project's Gemfile before running any generators or starting the server.
 
 If you're using the mustache_rails3 gem, be sure to also add
-<pre><code>gem 'mustache_rails3'</code></pre>
+<pre><code>gem 'mustache_railstache'</code></pre>
 
 You can enable the mustache template handler by running
 <pre><code>rails g mustache:install</code></pre>
